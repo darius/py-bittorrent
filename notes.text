@@ -33,6 +33,13 @@ From the name and constructor I expected this to be a general-purpose
 bitvector class. It's partly that but with bittorrent logic mixed in.
 Bitfield.parse() belongs in peer.py. 
 
+I don't understand how this comment matches the code (after I messed
+with the code, admittedly):
+            """ Sanity check: do peer & client expect same # of pieces?
+                Check extra bits only.
+            """
+            assert bits.count(1) == 0
+
 peer.py:
 
 Peer.bitfield isn't called from anywhere?
