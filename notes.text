@@ -14,8 +14,6 @@ position) and some comments not?
 
 btclient.py:
 
-btclient.py:5: 'Reactor' imported but unused
-
     log_level = LEVELS.get(args.logging, logging.INFO)
 so --logging=blah silently turns into INFO?
 and doesn't the argparse setup already make INFO the default?
