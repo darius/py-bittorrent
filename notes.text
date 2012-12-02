@@ -12,7 +12,8 @@ Why are some comments like docstrings (though not in docstring
 position) and some comments not?
 
 pylint spouts a lot of nonsense warnings, but also finds some real
-errors, I think.
+errors, I think. pep8 and pyflakes are worth checking out (and less
+noisy) too.
 
 
 btclient.py:
