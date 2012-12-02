@@ -37,13 +37,13 @@ class Client(object):
     def _get_peers(self, resp):
         raw_bytes = [ord(c) for c in resp['peers']]
         peers = []
-        for i in range(0,len(raw_bytes) / 6):
+        for i in range(len(raw_bytes) / 6):
             start = i*6
             end = start + 6
             ip = ".".join(str(i) for i in raw_bytes[start:end-2])
             port = raw_bytes[end-2:end]
-            port = (port[1]) + (port[0] * 256)
-            peers.append([ip,port])
+            port = port[1] + port[0] * 256
+            peers.append([ip, port])
         return peers
     def connect_to_peers(self, peer_list):
         for peer in peer_list:
