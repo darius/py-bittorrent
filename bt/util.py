@@ -30,8 +30,7 @@ class Bitfield(object):
         self.byte_array = byte_array
     @classmethod
     def _bits(cls, data):
-        data_bytes = (ord(b) for b in data)
-        for b in data_bytes:
+        for b in map(ord, data):
             """Get bit by reducing b by 2^i.
                Bitwise AND outputs 1s and 0s as strings.
             """
