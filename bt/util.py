@@ -11,7 +11,7 @@ def sha1_hash(string):
     return hashlib.sha1(string).digest()
 
 class Bitfield(object):
-    def __init__(self, bool_array, total_length):
+    def __init__(self, bool_array):
         """Return at least len(bool_array) bits as complete bytes.
 
            Bit at position i represents client's posession (1)
@@ -19,7 +19,6 @@ class Bitfield(object):
 
         """
         self.logger = logging.getLogger('bt.util.Bitfield')
-        assert len(bool_array) == total_length
         str_output = "".join(map(str, bool_array))
         while len(str_output) % 8 != 0:
             str_output += "0"
