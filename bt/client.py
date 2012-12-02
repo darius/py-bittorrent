@@ -70,7 +70,7 @@ class Client(object):
         self.connect_to_peers(
                 self._new_peers(self._get_peers(resp), self)
                 )
-    def handshake(self, new_conn, addr, msg):
+    def handshake(self, conn, addr, msg):
         peer_id = repr(msg[20:])
         self.logger.debug('Testing for peer existence:', self.peers[peer_id])
         # Python will use repr(peer_id) in data structures; store it as such.
