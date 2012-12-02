@@ -24,14 +24,16 @@ class Client(object):
         self.tracker = Tracker(self.torrent, self)
         resp = self.tracker.connect()
         self.update_peers()
-        self._reactor.add_connections(self.conn, list(p.conn for p in self.peers.values()))
+        self._reactor.add_connections(self.conn,
+                                      [p.conn for p in self.peers.values()])
     def start(self):
         self._reactor.select()
     def _new_peers(self, peer_list, client):
         """Return new Peer instances for each peer the tracker tells us about.
         """
         own_ext_ip = urllib2.urlopen('http://ifconfig.me/ip').read() # HACK
-        return [Peer(p[0], p[1], client) for p in peer_list if p[0] != own_ext_ip]
+        return [Peer(p[0], p[1], client)
+                for p in peer_list if p[0] != own_ext_ip]
     def _get_peers(self, resp):
         raw_bytes = [ord(c) for c in resp['peers']]
         peers = []
@@ -54,9 +56,8 @@ class Client(object):
             try:
                 peer.conn.connect(peer.ip, peer.port)
             except socket.error, e:
-                self.logger.debug('Socket error while connecting to {}:{}: {}'.format(
-                    peer.ip, peer.port, e
-                    ))
+                self.logger.debug('Socket error while connecting to {}:{}: {}'
+                                  .format(peer.ip, peer.port, e))
             else:
                 peer.conn.enqueue_msg(handshake)
                 self.peers[peer.peer_id] = peer
