@@ -11,6 +11,9 @@ Some of them will be buggy.
 Why are some comments like docstrings (though not in docstring
 position) and some comments not?
 
+pylint spouts a lot of nonsense warnings, but also finds some real
+errors, I think.
+
 
 btclient.py:
 
