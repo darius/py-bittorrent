@@ -1,0 +1,39 @@
+needed (besides what's in requirements.txt):
+pip install argparse
+
+
+General:
+
+Since I don't see a test suite I'm going to favor writing comments
+here over writing patches, and my patches generally won't be tested.
+Some of them will be buggy.
+
+Why are some comments like docstrings (though not in docstring
+position) and some comments not?
+
+
+btclient.py:
+
+btclient.py:5: 'Reactor' imported but unused
+
+    log_level = LEVELS.get(args.logging, logging.INFO)
+so --logging=blah silently turns into INFO?
+and doesn't the argparse setup already make INFO the default?
+
+The --tests option doesn't really do anything -- no tests (and anyway
+it starts looking for mytorrent.torrent even if you do set --tests)
+
+
+util.py:
+
+why DownloadCompleteException?
+
+Bitfield:
+From the name and constructor I expected this to be a general-purpose
+bitvector class. It's partly that but with bittorrent logic mixed in.
+Bitfield.parse() belongs in peer.py. 
+
+peer.py:
+
+Peer.bitfield isn't called from anywhere?
+
